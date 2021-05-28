@@ -40,8 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContaDias.cs" />
+    <Compile Include="ContadorPeriodo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QualificadorData.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

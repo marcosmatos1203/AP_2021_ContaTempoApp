@@ -7,44 +7,70 @@ namespace UnitTestContaTempo
     [TestClass]
     public class UnitTest1
     {
-        ContaDias contaDias = new ContaDias();
+        ContadorPeriodo periodo = new ContadorPeriodo();
         [TestMethod]
-        public void DeveRetornarNumeroSeDias()
+        public void UmAnoPorEscrito()
         {
-            DateTime dataInformada = new DateTime(2021,05,18);
-            Assert.AreEqual(8, contaDias.DiasPassados(dataInformada));
+            DateTime dataInformada = new DateTime(2020, 05, 18);
+            //Assert.AreEqual(1, periodo.AnosPassados(dataInformada));
+            Assert.AreEqual("um ano", periodo.AnosPassadosPorEscrito(dataInformada));
         }
         [TestMethod]
-        public void DeveRetornarNumeroDeSemanas()
+        public void VaziuAnoPorEscrito()
+        {
+            DateTime dataInformada = new DateTime(2020, 05, 29);
+            Assert.AreEqual(0, periodo.AnosPassados(dataInformada));
+            Assert.AreEqual("", periodo.AnosPassadosPorEscrito(dataInformada));
+        }
+        [TestMethod]
+        public void UmAnoPorEscritoDias()
+        {
+            DateTime dataInformada = new DateTime(2020, 05, 19);
+            Assert.AreEqual(1, periodo.AnosPassados(dataInformada));
+            Assert.AreEqual("um ano", periodo.AnosPassadosPorEscrito(dataInformada));
+        }
+        [TestMethod]
+        public void ZeroMes()
         {
             DateTime dataInformada = new DateTime(2021, 05, 18);
-            Assert.AreEqual(1, contaDias.SemanasPassados(dataInformada));
+            Assert.AreEqual(0, periodo.MesPassados(dataInformada));
         }
         [TestMethod]
-        public void DeveRetornarNumeroDeMeses()
+        public void ZeroAno()
         {
-            DateTime dataInformada = new DateTime(2020, 12, 18);
-            Assert.AreEqual(5, contaDias.MesesPassados(dataInformada));
+            DateTime dataInformada = new DateTime(2021, 05, 18);
+            Assert.AreEqual(0, periodo.AnosPassados(dataInformada));
         }
         [TestMethod]
-        public void DeveRetornarNumeroDeAnos()
+        public void ZeroAnoAnteriorMes()
         {
-            DateTime dataInformada = new DateTime(2019, 05, 18);
-            Assert.AreEqual(2, contaDias.AnosPassados(dataInformada));
+            DateTime dataInformada = new DateTime(2021, 06, 18);
+            Assert.AreEqual(0, periodo.AnosPassados(dataInformada));
         }
-       
-        //[TestMethod]
-        //public void DeveRetornarAnosPorEscritoMaisE()
-        //{
-        //    DateTime dataInformada = new DateTime(2019, 05, 18);
-        //    Assert.AreEqual("Dois anos e", contaDias.escreveData(dataInformada));
-        //}
+        [TestMethod]
+        public void ZeroAnoAnteriorDias()
+        {
+            DateTime dataInformada = new DateTime(2021, 05, 29);
+            Assert.AreEqual(0, periodo.AnosPassados(dataInformada));
+        }
+        [TestMethod]
+        public void UmAno()
+        {
+            DateTime dataInformada = new DateTime(2020, 05, 18);
+            Assert.AreEqual(1, periodo.AnosPassados(dataInformada));
+        }
+        [TestMethod]
+        public void DezAnos()
+        {
+            DateTime dataInformada = new DateTime(2011, 05, 18);
+            Assert.AreEqual(10, periodo.AnosPassados(dataInformada));
+        }
+        [TestMethod]
+        public void NoveAnos()
+        {
+            DateTime dataInformada = new DateTime(2011, 05, 28);
+            Assert.AreEqual(9, periodo.AnosPassados(dataInformada));
+        }
 
-        [TestMethod]
-        public void DeveRetornarDoisAnoseDoisMeses()
-        {
-            DateTime dataInformada = new DateTime(2019, 02, 18);
-            Assert.AreEqual("Dois anos e Dois meses ", contaDias.escreveData(dataInformada));
-        }
     }
 }
